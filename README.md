@@ -7,7 +7,7 @@ O desafio terá 4 semanas divididos em:
     * Analisar quais os tipos de dados :heavy_check_mark:
     * Verificar quais são as inconsistências nos dados :heavy_check_mark:
     * Corrigir as inconsistências nos dados :heavy_check_mark:
-    * Traduzir as colunas :heavy_check_mark:
+    * Traduzir as colunas 
     * Criar coluna de contas diárias :heavy_check_mark:
 * :pushpin: **Semana 2** - 
 * :pushpin: **Semana 3 e 4** - 
@@ -21,7 +21,7 @@ Os dados foram disponibilizados em json, pois foram trazidos diretamente da API.
 #### :card_file_box:	 Extração das colunas do json 
 Quando acabamos de importar os dados - a maioria das colunas (4) ainda tem dados em formato JSON para serem extraídos.
 ![image](https://user-images.githubusercontent.com/61653788/167664496-b1627402-2704-4942-a23a-b018334b18c1.png)
- Utilizando o **pd.json_normalize** extraí os dados das 4 colunas e concatenei com o dataset:
+ Utilizando o **pd.json_normalize** extrai os dados das 4 colunas e concatenei com o dataset:
 ![image](https://user-images.githubusercontent.com/61653788/167664992-fad8c395-af03-4327-9d87-8622eac3a776.png)
  
  No final temos 21 colunas no dataset.
@@ -38,6 +38,8 @@ E com isso, descobri que a coluna tinha campos com " " e teriamos que verificar 
 Procurando por colunas com casos de "" e '', descobri que apenas a cancelouPlano e totalGasto tem esses registros, então realizei a limpeza conforme:
 
 ![image](https://user-images.githubusercontent.com/61653788/167699704-193f209c-d03c-49d1-ba62-429a5f802795.png)
+#### :round_pushpin:	 Alterando os registros da coluna cidadaoIdoso
+
 ### :mag:	Análise Exploratória
 Verifiquei os registros inputados em cada coluna:
 ![image](https://user-images.githubusercontent.com/61653788/167702535-c2395fee-c106-4997-8560-d8c9cb5df24a.png)
@@ -74,6 +76,8 @@ Verifiquei os registros inputados em cada coluna:
     * streamingFilmes 
     * tipoContrato 
     * formaPagamento 
+#### :round_pushpin: ### Trazuzindo os dados Qualitativos
+
 #### :round_pushpin: Criar coluna de contas diárias
 É necessário calcular em uma nova coluna o gasto diário por cliente na posição 18 das colunas.
 ![image](https://user-images.githubusercontent.com/61653788/167713855-f4a838b9-324f-4b5c-83b8-e64f8e1885ed.png)
