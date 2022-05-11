@@ -40,6 +40,7 @@ Procurando por colunas com casos de "" e '', descobri que apenas a cancelouPlano
 ![image](https://user-images.githubusercontent.com/61653788/167699704-193f209c-d03c-49d1-ba62-429a5f802795.png)
 #### :round_pushpin:	 Alterando os registros da coluna cidadaoIdoso
 Alterei os registros de 0 e 1 para Não e Sim, respectivamente.
+
 ![image](https://user-images.githubusercontent.com/61653788/167908855-79599fc0-112c-463a-82cb-1fd057805ffa.png)
 ### :mag:	Análise Exploratória
 Verifiquei os registros inputados em cada coluna:
@@ -81,6 +82,7 @@ Verifiquei os registros inputados em cada coluna:
          
 #### :round_pushpin: Traduzindo os dados Qualitativos
 Realizei a tradução dos registros qualitativos
+
 ![image](https://user-images.githubusercontent.com/61653788/167909527-f2ef2a39-f365-4157-a35b-0616ef5648d1.png)
 
 #### :round_pushpin: Criar coluna de contas diárias
@@ -92,5 +94,6 @@ Em teoria o gasto total por cliente seria os meses de contrato x valor mensal, r
 ![image](https://user-images.githubusercontent.com/61653788/167714194-11e13526-c2cc-4ff8-929a-b6a3301041ff.png)
 ![image](https://user-images.githubusercontent.com/61653788/167714239-5888ef54-4e19-46f3-bd24-b0da67de0ea1.png)
 ![image](https://user-images.githubusercontent.com/61653788/167714789-d3ecfa33-2d72-42b6-b0db-4c428b9ecae8.png)
+
 
 
