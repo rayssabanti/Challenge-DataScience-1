@@ -39,7 +39,8 @@ Procurando por colunas com casos de "" e '', descobri que apenas a cancelouPlano
 
 ![image](https://user-images.githubusercontent.com/61653788/167699704-193f209c-d03c-49d1-ba62-429a5f802795.png)
 #### :round_pushpin:	 Alterando os registros da coluna cidadaoIdoso
-
+Alterei os registros de 0 e 1 para Não e Sim, respectivamente.
+![image](https://user-images.githubusercontent.com/61653788/167908855-79599fc0-112c-463a-82cb-1fd057805ffa.png)
 ### :mag:	Análise Exploratória
 Verifiquei os registros inputados em cada coluna:
 ![image](https://user-images.githubusercontent.com/61653788/167702535-c2395fee-c106-4997-8560-d8c9cb5df24a.png)
@@ -60,12 +61,12 @@ Verifiquei os registros inputados em cada coluna:
     Utiliza dados que informam nomes, rótulos ou categorias. Os dados não são ordenados e não devem ser usados para cálculos de médias, como é o caso de raça e código do município, por exemplo.
     * ClienteID
     * cancelouPlano
+    * genero 
     * cidadaoIdoso 
     * temParceiro 
-    * Genero 
     * temDependentes 
-    * formaPagamento
-    * temDependentes 
+    * mesesContrato
+    * assinaturaTelefonica 
     * multiplasLinhas 
     * provedorInternet 
     * segurancaOnline 
@@ -75,8 +76,12 @@ Verifiquei os registros inputados em cada coluna:
     * streamingTV 
     * streamingFilmes 
     * tipoContrato 
-    * formaPagamento 
-#### :round_pushpin: ### Trazuzindo os dados Qualitativos
+    * contaOnline
+    * formaPagamento  
+         
+#### :round_pushpin: Traduzindo os dados Qualitativos
+Realizei a tradução dos registros qualitativos
+![image](https://user-images.githubusercontent.com/61653788/167909527-f2ef2a39-f365-4157-a35b-0616ef5648d1.png)
 
 #### :round_pushpin: Criar coluna de contas diárias
 É necessário calcular em uma nova coluna o gasto diário por cliente na posição 18 das colunas.
