@@ -9,7 +9,12 @@ O desafio terá 4 semanas divididos em:
     * Corrigir as inconsistências nos dados :heavy_check_mark:
     * Traduzir as colunas 
     * Criar coluna de contas diárias :heavy_check_mark:
-* :pushpin: **Semana 2** - 
+* :pushpin: **Semana 2** - Explorando os dados :hammer_and_wrench:	
+   * Analisar a variável target: Churn
+   * Visualizar a distribuição da variável target: Churn
+   * Criar visualizações relevantes em relação ao Churn
+   * Analisar a correlação das variáveis
+   * Testar diferentes tipos de gráficos
 * :pushpin: **Semana 3 e 4** - 
 
 ### :bookmark: Importação das bibliotecas
