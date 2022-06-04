@@ -2,103 +2,49 @@
 Esse desafio consiste em desenvolver e aplicar  habilidades de Ciência de dados como explorar, tratar e modelar os dados, focando na otimização de cada um dos modelos com a finalidade de obter o melhor resultado para a tomada de decisão. 
 
 O desafio terá 4 semanas divididos em: 
-* :pushpin: **Semana 1** - limpeza dos dados trazidos de uma API
-    * Entender quais informações o conjunto de dados possui :heavy_check_mark:
-    * Analisar quais os tipos de dados :heavy_check_mark:
-    * Verificar quais são as inconsistências nos dados :heavy_check_mark:
-    * Corrigir as inconsistências nos dados :heavy_check_mark:
-    * Traduzir as colunas 
-    * Criar coluna de contas diárias :heavy_check_mark:
-* :pushpin: **Semana 2** - Explorando os dados :hammer_and_wrench:	
-   * Analisar a variável target: Churn
-   * Visualizar a distribuição da variável target: Churn
-   * Criar visualizações relevantes em relação ao Churn
-   * Analisar a correlação das variáveis
-   * Testar diferentes tipos de gráficos
-* :pushpin: **Semana 3 e 4** - 
-
-### :bookmark: Importação das bibliotecas
-* Pandas
-### :bookmark: Importação dos dados 
-Os dados foram disponibilizados em json, pois foram trazidos diretamente da API.
-*(Arquivo original salvo na pasta: Dados\Telco-Customer-Churn.json)*
-### :wastebasket:	Limpeza dos Dados
-#### :card_file_box:	 Extração das colunas do json 
-Quando acabamos de importar os dados - a maioria das colunas (4) ainda tem dados em formato JSON para serem extraídos.
-![image](https://user-images.githubusercontent.com/61653788/167664496-b1627402-2704-4942-a23a-b018334b18c1.png)
- Utilizando o **pd.json_normalize** extrai os dados das 4 colunas e concatenei com o dataset:
-![image](https://user-images.githubusercontent.com/61653788/167664992-fad8c395-af03-4327-9d87-8622eac3a776.png)
- 
- No final temos 21 colunas no dataset.
-#### :card_file_box:	 Padronizando e traduzindo o nome das colunas 
-Realizei a tradução e padronização do nome das colunas (primeira palavra minuscula, segunda palavra com a primeira letra maiúscula).
-![image](https://user-images.githubusercontent.com/61653788/167696792-521d6247-261a-49c2-9798-140d40757b22.png)
-#### :mag: Buscando registro nullos
-Verificamos se existia algum registro null para limpar, porém não foi apontado.
-![image](https://user-images.githubusercontent.com/61653788/167697572-c13ce07c-0024-4433-9877-477530734e32.png)
-#### :round_pushpin:	 Mudando o tipo das colunas
-Foi verificado que as colunas cidadaoIdoso, mesesContrato, totalServicosMensalmente e totalGasto devem ser numéricas e apenas o totalGasto estava fora disso. 
-E com isso, descobri que a coluna tinha campos com " " e teriamos que verificar e limpar novamente as colunas com esse padrão.
-![image](https://user-images.githubusercontent.com/61653788/167698418-cdc35cbb-d782-4c16-90f8-f5f9ae136848.png)
-Procurando por colunas com casos de "" e '', descobri que apenas a cancelouPlano e totalGasto tem esses registros, então realizei a limpeza conforme:
-
-![image](https://user-images.githubusercontent.com/61653788/167699704-193f209c-d03c-49d1-ba62-429a5f802795.png)
-#### :round_pushpin:	 Alterando os registros da coluna cidadaoIdoso
-Alterei os registros de 0 e 1 para Não e Sim, respectivamente.
-
-![image](https://user-images.githubusercontent.com/61653788/167908855-79599fc0-112c-463a-82cb-1fd057805ffa.png)
-### :mag:	Análise Exploratória
-Verifiquei os registros inputados em cada coluna:
-![image](https://user-images.githubusercontent.com/61653788/167702535-c2395fee-c106-4997-8560-d8c9cb5df24a.png)
-#### :round_pushpin:	 Tipo de dados no dataset
-* :round_pushpin:	 **Dados Quantitativos:**
-  São números que representam contagens ou medidas (renda e anos de escolaridade,por exemplo). 
-  Esses dados se dividem em discretos e contínuos:
-  * **Discreto:**
-    Os dados discretos são aqueles em que o número de valores possíveis são finitos ou “enumeráveis” (tal como o número de cômodos em um domicílio).
-    * MesesContrato
-  * **Contínuo:**
-    Os dados contínuos resultam de infinitos valores possíveis em uma escala contínua (renda per capita).
-    * totalServicosMensalmente 
-    * totalGasto 
- * :round_pushpin:	 **Dados Qualitativos ou Categóricos:**
-  Se distinguem por alguma característica não-numérica (sexo e raça, por exemplo).
-  * **Nominal:**
-    Utiliza dados que informam nomes, rótulos ou categorias. Os dados não são ordenados e não devem ser usados para cálculos de médias, como é o caso de raça e código do município, por exemplo.
-    * ClienteID
-    * cancelouPlano
-    * genero 
-    * cidadaoIdoso 
-    * temParceiro 
-    * temDependentes 
-    * mesesContrato
-    * assinaturaTelefonica 
-    * multiplasLinhas 
-    * provedorInternet 
-    * segurancaOnline 
-    * backupOnline 
-    * protecaoDispositivo 
-    * suporteTecnico 
-    * streamingTV 
-    * streamingFilmes 
-    * tipoContrato 
-    * contaOnline
-    * formaPagamento  
-         
-#### :round_pushpin: Traduzindo os dados Qualitativos
-Realizei a tradução dos registros qualitativos
-
-![image](https://user-images.githubusercontent.com/61653788/167909527-f2ef2a39-f365-4157-a35b-0616ef5648d1.png)
-
-#### :round_pushpin: Criar coluna de contas diárias
-É necessário calcular em uma nova coluna o gasto diário por cliente na posição 18 das colunas.
-![image](https://user-images.githubusercontent.com/61653788/167713855-f4a838b9-324f-4b5c-83b8-e64f8e1885ed.png)
-##### :round_pushpin: Validando os valores da coluna gastoTotal
-Em teoria o gasto total por cliente seria os meses de contrato x valor mensal, realizando esse cálculo encontrammos valores diferentes dos contidos na coluna gastoTotal.
-
-![image](https://user-images.githubusercontent.com/61653788/167714194-11e13526-c2cc-4ff8-929a-b6a3301041ff.png)
-![image](https://user-images.githubusercontent.com/61653788/167714239-5888ef54-4e19-46f3-bd24-b0da67de0ea1.png)
-![image](https://user-images.githubusercontent.com/61653788/167714789-d3ecfa33-2d72-42b6-b0db-4c428b9ecae8.png)
+* :pushpin: **Semana 1** - limpeza dos dados trazidos de uma API :heavy_check_mark:
+* :pushpin: **Semana 2** - Explorando os dados: vendo as informações por uma outra perspectiva  :heavy_check_mark:
+* :pushpin: **Semana 3 e 4** - Exterminando o futuro: Criando modelos de ML :hammer_and_wrench:	
 
 
-
+## :bookmark: Semana 1
+### :mag: Overview
+[Mais detalhes do processo aqui](https://github.com/rayssabanti/Challenge-DataScience-1/tree/main/Semana%201)
+ <br>
+Realizar o entendimento inicial dos dados, quantas colunas e registros, com qual tipo de dados estamos trabalhando e se existem registros null/na. 
+* **Entender quais informações o conjunto de dados possui** :heavy_check_mark:
+   * Json trouxe acoplado algumas colunas - custumer, phone, internet e account ainda possuem informações acopladas, extraimos as informações para novas colunas usando o json_normalize. <br>
+      ![image](https://user-images.githubusercontent.com/61653788/172026281-2ccecbec-f6ed-4e73-a72e-ba3a9ad94fd5.png)
+   * E adicionamos ao dataset, tendo no final 21 colunas<br>
+       <img src="https://user-images.githubusercontent.com/61653788/172026377-e1a7dd0e-aba3-4c79-892c-4fa2bcc53812.png" width="450">
+* **Analisar quais os tipos de dados** :heavy_check_mark: 
+    * Utilizando o Dtype, verifiquei os tipos de dados de cada coluna, e alterei aqueles que não faziam sentido.<br>
+      <img src="https://user-images.githubusercontent.com/61653788/172026468-8d01c92f-2d50-4493-beeb-1e272918416e.png" width="300">
+* **Verificar quais são as inconsistências nos dados** :heavy_check_mark:   
+   * Realizei a busca por nulos em todas as colunas utilizando o isnull()<br>
+      <img src="https://user-images.githubusercontent.com/61653788/172026483-de9f8c80-6e0f-41f5-a0b1-931bf48c8af4.png" width="300">
+   * Porém, eu percebi no desafio anterior, que as colunas totalGasto e cancelouPlano, tinham campos com " " que nem o isna() ou isnul() detectaram.<br>
+     <img src="https://user-images.githubusercontent.com/61653788/172026622-b0682dab-38b8-4b8d-b5dd-0e22e35bf320.png" width="450">
+* **Corrigir as inconsistências nos dados** :heavy_check_mark:
+   * Então com um for, realizei a correção, substituindo por 0 ou Sem Informação <br>
+     <img src="https://user-images.githubusercontent.com/61653788/172026512-fe969164-b0f3-4e6e-98e4-8f27a91657a9.png" width="440">
+* **Traduzir as colunas** 
+   * Realizei a padronização e tradução usando o rename() <br>
+     <img src="https://user-images.githubusercontent.com/61653788/172026710-f085e8f5-2dda-4ffb-b606-d6a752b48f9b.png" width="440">
+   * E realizei a tradução dos dados <br>
+     <img src="https://user-images.githubusercontent.com/61653788/172026749-79296447-383b-4c47-827b-3734bee415a1.png" width="450">
+* **Criar coluna de contas diárias** :heavy_check_mark:
+   * Criei a coluna de contas diarias com a fórmula *gastoDiario = valormensal / 30* e inseri na posição 18
+     <img src="https://user-images.githubusercontent.com/61653788/172026767-1810e9a9-f8b8-437f-b90a-e94754d79fb5.png" width="440">
+     <BR>
+   
+   
+[Mais detalhes do processo aqui](https://github.com/rayssabanti/Challenge-DataScience-1/tree/main/Semana%201)
+## :bookmark: Semana 2
+### :mag: Overview
+Realizar a exploração dos dados em principal foco a nova variável Churn, buscando correlações e distribuições com as outras variáveis.
+* **Analisar a variável target: Churn**
+* **Visualizar a distribuição da variável target: Churn**
+* **Criar visualizações relevantes em relação ao Churn**
+* **Analisar a correlação das variáveis**
+* **Testar diferentes tipos de gráficos**
